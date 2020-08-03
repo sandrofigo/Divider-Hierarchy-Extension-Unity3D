@@ -1,0 +1,10 @@
+{
+	"author": "Sandro Figo (https://sandrofigo.com)",
+	"description": "An extensions to quickly create empty game objects that act as dividers in the hierarchy.",
+	"displayName": "Divider Hierarchy Extension",
+	"license": "MIT",
+	"name": "com.sandrofigo.divider-hierarchy-extension",
+	"version": "0.1.0",
+	"dependencies": {
+	}
+}
