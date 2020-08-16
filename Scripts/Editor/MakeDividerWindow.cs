@@ -9,9 +9,7 @@ namespace DividerHierarchyExtension
         private const int Height = 100;
 
         private const string TextFieldName = "textField";
-        
-        private bool positionSet;
-        
+
         private bool focused;
         
         private GameObject selectedGameObject;
@@ -28,7 +26,7 @@ namespace DividerHierarchyExtension
             selectedGameObject = selected;
 
             if (selectedGameObject != null)
-                initialName = nameField = RemoveDecoration(selectedGameObject.name);
+                initialName = nameField = Helper.RemoveDecoration(selectedGameObject.name);
         }
         
         private void OnGUI()
@@ -72,20 +70,7 @@ namespace DividerHierarchyExtension
 
         private void ApplyName()
         {
-            selectedGameObject.name = AddDecoration(nameField);
-        }
-
-        private string RemoveDecoration(string s)
-        {
-            s = s.Replace("----- ", string.Empty);
-            s = s.Replace(" -----", string.Empty);
-
-            return s;
-        }
-
-        private string AddDecoration(string s)
-        {
-            return $"----- {s} -----";
+            selectedGameObject.name = Helper.AddDecoration(nameField);
         }
 
         private void OnDestroy()

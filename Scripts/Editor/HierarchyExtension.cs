@@ -5,16 +5,15 @@ namespace DividerHierarchyExtension
 {
     internal static class HierarchyExtension
     {
-        public static GameObject SelectedGameObject { get; private set; }
-        
+        public const string Prefix = "----- ";
+        public const string Suffix = " -----";
+
         [MenuItem("GameObject/Create or Edit Divider", false, 0)]
         private static void HandleDivider()
         {
-            SelectedGameObject = Selection.activeGameObject;
-
-            bool shouldCreateDivider = SelectedGameObject == null;
+            bool shouldCreateDivider = Selection.activeGameObject == null;
             
-            ShowWindow(shouldCreateDivider ? "Create Divider" : "Edit Divider", SelectedGameObject);
+            ShowWindow(shouldCreateDivider ? "Create Divider" : "Edit Divider", Selection.activeGameObject);
         }
 
         private static void ShowWindow(string title, GameObject selectedGameObject)
