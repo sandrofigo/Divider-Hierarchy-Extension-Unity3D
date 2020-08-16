@@ -5,23 +5,21 @@ namespace DividerHierarchyExtension
 {
     internal static class HierarchyExtension
     {
-        public static GameObject selected;
+        public const string Prefix = "----- ";
+        public const string Suffix = " -----";
 
-        [MenuItem("GameObject/Make Divider", false, 0)]
-        private static void Edit()
+        [MenuItem("GameObject/Create or Edit Divider", false, 0)]
+        private static void HandleDivider()
         {
-            GameObject gameObject = Selection.activeGameObject;
+            bool shouldCreateDivider = Selection.activeGameObject == null;
+            
+            ShowWindow(shouldCreateDivider ? "Create Divider" : "Edit Divider", Selection.activeGameObject);
+        }
 
-            if (gameObject == null)
-                return;
-
-            selected = gameObject;
-
-            const int width = 250;
-            const int height = 100;
-
-            var window = ScriptableObject.CreateInstance<MakeDividerWindow>();
-            window.position = new Rect(Screen.currentResolution.width / 2f - width / 2f, Screen.currentResolution.height / 2f - height / 2f, width, height);
+        private static void ShowWindow(string title, GameObject selectedGameObject)
+        {
+            var window = (MakeDividerWindow)EditorWindow.GetWindow(typeof(MakeDividerWindow), true, title);
+            window.Initialize(selectedGameObject);
             window.Show();
         }
     }
