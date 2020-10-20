@@ -4,7 +4,7 @@
 	"displayName": "Divider Hierarchy Extension",
 	"license": "MIT",
 	"name": "com.sandrofigo.divider-hierarchy-extension",
-	"version": "0.1.2",
+	"version": "0.2.0",
 	"dependencies": {
 	}
 }
