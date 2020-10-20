@@ -50,6 +50,7 @@ namespace DividerHierarchyExtension
                     if (selectedGameObject == null)
                         selectedGameObject = new GameObject();
 
+                    SetEditorOnlyTag();
                     SetSelectionDirty();
                     ApplyName();
                 }
@@ -75,12 +76,18 @@ namespace DividerHierarchyExtension
 
         private void OnDestroy()
         {
+            SetEditorOnlyTag();
             SetSelectionDirty();
         }
 
         private void SetSelectionDirty()
         {
             EditorUtility.SetDirty(selectedGameObject);
+        }
+
+        private void SetEditorOnlyTag()
+        {
+            selectedGameObject.tag = "EditorOnly";
         }
     }
 }
